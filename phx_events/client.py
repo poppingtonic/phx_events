@@ -75,6 +75,9 @@ class PHXChannelsClient:
         # Get the default event loop or use the user-provided one if it exists
         self._loop = event_loop or asyncio.get_event_loop()
 
+        # set up websocket to be assigned after connection is completed
+        self.websocket = None
+
     async def __aenter__(self) -> 'PHXChannelsClient':
         self.logger.debug('Entering PHXChannelsClient context')
         return self
